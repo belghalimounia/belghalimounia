@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form to Table</title>
+<style>
+/* Styles */
+
+/* Global */
+body {
+    font-family: Arial, sans-serif; 
+    background-color: #7fc8f0; /* Couleur turquoise */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 100px; /* Espacement supplémentaire pour le logo et le titre */
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.logo img {
+    width: 90px; /* Ajustez la taille selon votre logo */
+    height: auto;
+    margin-left: 1px;
+}
+
+.title {
+    position: absolute;
+    top: 30px;
+    left: 80px;
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 70px;
+    color: #8b008b; /* Couleur move */
+}
+
+/* Form styles */
+.form_table {
+    padding: 20px;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin-bottom: 50px; 
+    margin-top: 50px;
+
+}
+
+form {
+    padding: 30px;
+
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+    font-size: 18px;
+}
+
+form input[type="text"],
+form input[type="tel"],
+select {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: transparent;
+    border-radius: 100px;
+
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="tel"]:focus {
+    border-color: #4682b4; /* Couleur bleu acier */
+    box-shadow: 0 0 8px #4682b4;
+    border: none;
+    border-radius: 100px;
+    border-color: none;
+}
+
+form input[type="submit"] {
+    width: 100px;
+    padding: 14px;
+    padding: 1px 1px 1px 1px;
+    height: 40px;
+    border: none;
+    margin-left:100px ;
+    border-radius: 80px;
+    background-color: #2d0541;/* Couleur violette */
+    color: #fff;
+    border-radius: 6px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #551177; /* Couleur violet foncé */
+}
+
+/* Table styles */
+.table_container {
+    padding: 20px;
+    transition: transform 0.3s ease;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-left: 30px;
+    margin-top: 50px;
+
+}
+
+table {
+    border-collapse: collapse;
+    width: 870px;
+}
+
+th, td {
+    padding: 16px;
+    text-align: left;
+    color: #333;
+    font-size: 18px;
+}
+
+th {
+    background-color: #2d0541; /* Couleur violette */
+    color: #fff;
+}
+
+td {
+    border-bottom: 1px solid #ddd;
+}
+
+button {
+    cursor: pointer;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-right: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+}
+
+button.delete {
+    background-color: #4682b4; /* Couleur bleu acier */
+    color: #fff;
+}
+
+button.delete:hover {
+    background-color: #5f9ea0; /* Couleur cyan clair */
+}
+
+button.update {
+    background-color: #4682b4; /* Couleur bleu acier */
+    color: #fff;
+}
+
+button.update:hover {
+    background-color: #5f9ea0; /* Couleur cyan clair */
+}
+
+button.affect {
+    background-color: #4682b4; /* Couleur bleu acier */
+    color: #fff;
+}
+
+button.affect:hover {
+    background-color: #5f9ea0; /* Couleur cyan clair */
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="submit"],
+select {
+    font-weight: bold;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+</style>
+</head>
+<body>
+    <div class="logo">
+        <img src="https://cdn-icons-png.flaticon.com/512/6501/6501050.png" alt="Logo">
+    </div>
+    <div class="title">
+    S'INSCRIRE    </div>
+<div class="container">
+    <div class="form_table" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <form id="dataForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Enter your last name">
+            <label for="tel">Phone</label>
+            <input type="tel" id="tel" name="tel" placeholder="Enter your phone number">
+            <label for="CIN">CIN</label>
+            <input type="text" id="CIN" name="CIN" placeholder="Enter your CIN">
+            <label for="city">City</label>
+<select id="city" name="city">
+    <option value="">Select your city</option>
+    <option value="Casablanca">Casablanca</option>
+    <option value="Rabat">Rabat</option>
+    <option value="sale">Sale</option>
+    <option value="Tanger">Tanger</option>
+    <option value="El jadida">El jadida</option>
+    <option value="Mohammedia">Mohammedia</option>
+    <option value="Bouznika">Bouznika</option>
+    <option value="Kenitra">Kenitra</option>
+    <option value="Safi">Safi</option>
+    <option value="Essaouira">Essaouira</option>
+    <option value="Agadir">Agadir</option>
+    <option value="Fes">Fes</option>
+    <option value="Meknes">Meknes</option>
+    <option value="Oujda">Oujda</option>
+    <option value="Tetouan">Tetouan</option></select>
+            <input id="submit_submit" type="submit" value=" + ADD">
+        </form>
+        <div id="errorMessages" class="error-message"></div>
+    </div>
+
+    <div class="table_container" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Last Name</th>
+                    <th>Phone</th>
+                    <th>CIN</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    document.getElementById("dataForm").addEventListener("submit", function(event) {
+           event.preventDefault(); 
+           
+           var name = document.getElementById("name").value;
+           var lastName = document.getElementById("lastName").value;
+           var tel = document.getElementById("tel").value;
+           var CIN = document.getElementById("CIN").value;
+           var city = document.getElementById("city").value;
+   
+           var errorMessages = document.getElementById("errorMessages");
+           errorMessages.innerHTML = ""; // Efface les messages d'erreur précédents
+   
+           if (name === "") {
+               errorMessages.innerHTML += "Forget Name! Please fill in the Name field.<br>";
+           } else if (!/^[A-Za-z\s]+$/.test(name)) {
+               errorMessages.innerHTML += "Name can only contain letters.<br>";
+           }
+       
+           if (lastName === "") {
+               errorMessages.innerHTML += "Forget Last Name! Please fill in the Last Name field.<br>";
+           } else if (!/^[A-Za-z\s]+$/.test(lastName)) {
+               errorMessages.innerHTML += "Last Name can only contain letters.<br>";
+           }
+           
+           if (tel === "") {
+        errorMessages.innerHTML += "Forget Telephone! Please fill in the Telephone field.<br>";
+    } else if (!/^(07|06)\d{8}$/.test(tel)) {
+        errorMessages.innerHTML += "Telephone number must start with '07' or '06' and have exactly 10 digits.<br>";
+    }
+           
+           if (CIN === "") {
+               errorMessages.innerHTML += "Forget CIN! Please fill in the CIN field.<br>";
+           } else if (!/^[a-zA-Z0-9]+$/.test(CIN)) {
+               errorMessages.innerHTML += "CIN must be alphanumeric.<br>";
+           }
+           
+           var table = document.getElementById("dataTable").getElementsByTagName('tbody')[0];
+           for (var i = 0; i < table.rows.length; i++) {
+               if (table.rows[i].cells[3].innerHTML === CIN) {
+                   errorMessages.innerHTML += "Existent CIN. Please provide a unique CIN.<br>";
+                   return;
+               }
+           }
+       
+           // Si aucun message d'erreur n'est affiché, ajoute la ligne au tableau
+           if (errorMessages.innerHTML === "") {
+               var newRow = table.insertRow(table.rows.length);
+               var cell1 = newRow.insertCell(0);
+               var cell2 = newRow.insertCell(1);
+               var cell3 = newRow.insertCell(2);
+               var cell4 = newRow.insertCell(3);
+               var cell5 = newRow.insertCell(4);
+   
+               cell1.innerHTML = name;
+               cell2.innerHTML = lastName;
+               cell3.innerHTML = tel;
+               cell4.innerHTML = CIN;
+               cell5.innerHTML = city;
+               var cell6 = newRow.insertCell(5);
+               cell6.innerHTML = '<button class="delete" onclick="deleteRow(this)"><strong>Delete</strong></button> ' +
+                                 '<button class="update" onclick="updateRow(this)"><strong>Update</strong></button> ' +
+                                 '<button class="affect" onclick="affectRow(this)"><strong>Affect</strong></button>';
+           }
+       });
+   
+       function deleteRow(btn) {
+           var row = btn.parentNode.parentNode;
+           row.parentNode.removeChild(row);
+       }
+   
+       function updateRow(btn) {
+           var row = btn.parentNode.parentNode;
+           var cells = row.getElementsByTagName('td');
+           for (var i = 0; i < cells.length - 1; i++) {
+               var cell = cells[i];
+               var value = cell.innerHTML;
+               cell.innerHTML = '<input type="text" value="' + value + '" style="border-radius: 10px; background-color: transparent ; color: #333; font-weight: bold; font-size: 16px; width:70px ; height:30px ; border:1px solid ##7fc8f0 ;">';
+           }
+       }
+   
+       function affectRow(btn) {
+           var row = btn.parentNode.parentNode;
+           var cells = row.getElementsByTagName('td');
+           for (var i = 0; i < cells.length - 1; i++) {
+               var cell = cells[i];
+               var input = cell.querySelector('input');
+               if (input) {
+                   cell.innerHTML = input.value;
+               }
+           }
+           alert("The column has been affected.");
+       }
+   </script>
+</body>
+</html>
